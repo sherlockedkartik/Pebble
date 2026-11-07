@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HabitRow: View {
-    let habit: Habit
+    @Binding var habit: Habit
 
     var body: some View {
         HStack(spacing: 12) {
@@ -29,9 +29,20 @@ struct HabitRow: View {
 
             Spacer()
 
-            Image(systemName: habit.isCompleted ? "checkmark.circle.fill" : "circle")
+            Button {
+                habit.isCompleted.toggle()
+            } label: {
+                Image(
+                    systemName: habit.isCompleted
+                    ? "checkmark.circle.fill"
+                    : "circle"
+                )
                 .font(.title)
-                .foregroundStyle(habit.isCompleted ? .green : .secondary)
+                .foregroundStyle(
+                    habit.isCompleted ? .green : .gray
+                )
+            }
+            .buttonStyle(.plain)
         }
         .padding(16)
         .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 24))
@@ -39,6 +50,16 @@ struct HabitRow: View {
 }
 
 #Preview {
-    HabitRow(habit: Habit(name: "Morning Workout", icon: "dumbbell.fill", category: "Fitness", streak: 14, isCompleted: true))
-        .padding(.horizontal, 20)
+    HabitRow(
+        habit: .constant(
+            Habit(
+                name: "Morning Workout",
+                icon: "dumbbell.fill",
+                category: "Fitness",
+                streak: 14,
+                isCompleted: true
+            )
+        )
+    )
+    .padding(.horizontal, 20)
 }
