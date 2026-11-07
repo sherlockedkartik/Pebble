@@ -54,7 +54,8 @@ struct HabitRow: View {
             Habit(
                 name: "Morning Workout",
                 icon: "dumbbell.fill",
-                category: "Fitness",
+                category: .fitness,
+                frequency: .daily,
                 streak: 14,
                 isCompleted: true
             )

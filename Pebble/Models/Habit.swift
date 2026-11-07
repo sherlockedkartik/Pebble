@@ -9,10 +9,13 @@
 import Foundation
 
 struct Habit: Identifiable {
-    let id = UUID()
-    let name: String
-    let icon: String
-    let category: String
+    var id = UUID()
+
+    var name: String
+    var icon: String
+    var category: HabitCategory
+    var frequency: HabitFrequency
+
     var streak: Int
     var isCompleted: Bool
 }
