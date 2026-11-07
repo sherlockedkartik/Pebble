@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    
     @State private var habits = [
         Habit(
             name: "Morning Workout",
@@ -25,21 +25,37 @@ struct ContentView: View {
             isCompleted: false
         )
     ]
-
+    
     var body: some View {
-        ScrollView {
-            LazyVStack(spacing: 12) {
-
-                ForEach($habits) { $habit in
-                    HabitRow(habit: $habit)
-                        .animation(
-                            .spring(),
-                            value: habit.isCompleted
-                        )
+        NavigationStack{
+            
+            VStack(spacing: 0){
+                GreetingHeader()
+                
+                NavigationLink {
+                    AddHabitView()
+                } label: {
+                    Label("Add New Habit", systemImage: "plus")
                 }
-
+                
+                ScrollView {
+                    SectionHeader(title: "Today's Habits")
+                    
+                    
+                    LazyVStack(spacing: 12) {
+                        
+                        ForEach($habits) { $habit in
+                            HabitRow(habit: $habit)
+                                .animation(
+                                    .spring(),
+                                    value: habit.isCompleted
+                                )
+                        }
+                        
+                    }
+                    .padding(.horizontal, 20)
+                }
             }
-            .padding(.horizontal, 20)
         }
     }
 }

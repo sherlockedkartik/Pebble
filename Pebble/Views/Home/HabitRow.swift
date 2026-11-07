@@ -44,8 +44,7 @@ struct HabitRow: View {
             }
             .buttonStyle(.plain)
         }
-        .padding(16)
-        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 24))
+        .pebbleCardStyle()
     }
 }
 

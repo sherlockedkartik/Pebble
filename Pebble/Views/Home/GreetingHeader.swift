@@ -10,16 +10,29 @@ import SwiftUI
 
 struct GreetingHeader: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text("WEDNESDAY, NOV 5")
-                .font(.caption)
-                .fontWeight(.semibold)
-                .foregroundStyle(.secondary)
-
-            Text("Good morning, Kartik")
+        HStack{
+            VStack(alignment: .leading, spacing: 4) {
+                Text("WEDNESDAY, NOV 5")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.secondary)
+                
+                Text("Good morning, Kartik")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
+                Text("Let's make today count.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+            
+            Image(systemName: "person.circle")
                 .font(.largeTitle)
-                .fontWeight(.bold)
+               
         }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 16)
     }
 }
 
